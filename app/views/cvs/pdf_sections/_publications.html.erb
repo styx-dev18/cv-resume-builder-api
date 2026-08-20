@@ -1,0 +1,12 @@
+<div class="section section-gap-2">
+  <h2 class="section-title"><%= title %></h2>
+  <% items.each do |item| %>
+    <div class="entry row">
+      <div>
+        <p class="semibold"><%= item["title"] %></p>
+        <% if item["publisher"].present? %><p class="muted"><%= item["publisher"] %></p><% end %>
+      </div>
+      <% if item["date"].present? %><p class="shrink-0 semibold"><%= item["date"] %></p><% end %>
+    </div>
+  <% end %>
+</div>

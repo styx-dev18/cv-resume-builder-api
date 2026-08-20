@@ -1,0 +1,8 @@
+<% content = items.first&.dig("content") %>
+<% if content.present? %>
+<div class="section section-gap-2">
+  <div class="entry rich-text">
+    <%= sanitize(content, tags: %w[p strong em u s ol ul li a br], attributes: %w[href target rel]) %>
+  </div>
+</div>
+<% end %>

@@ -1,0 +1,13 @@
+<div class="section section-gap-2">
+  <h2 class="section-title"><%= title %></h2>
+  <% items.each do |item| %>
+    <% contact = [ item["email"], item["phone"] ].select(&:present?).join(" · ") %>
+    <div class="entry">
+      <p class="semibold">
+        <%= item["name"] %>
+        <% if item["relationship"].present? %> &middot; <%= item["relationship"] %><% end %>
+      </p>
+      <% if contact.present? %><p class="muted"><%= contact %></p><% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+<div class="section section-gap-3">
+  <h2 class="section-title"><%= title %></h2>
+  <% items.each do |item| %>
+    <div class="entry">
+      <p class="semibold">
+        <%= item["name"] %>
+        <% if item["link"].present? %>
+          <a href="<%= external_href(item["link"]) %>" class="muted external-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M15 3h6v6"/>
+              <path d="M10 14 21 3"/>
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            </svg>
+          </a>
+        <% end %>
+      </p>
+      <% if item["description"].present? %>
+        <p class="muted"><%= item["description"] %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

@@ -1,0 +1,9 @@
+<div class="section section-gap-1">
+  <h2 class="section-title"><%= title %></h2>
+  <% items.each do |item| %>
+    <p class="entry">
+      <% if item["category"].present? %><span class="semibold"><%= item["category"] %>: </span><% end %>
+      <%= item["skills"] %>
+    </p>
+  <% end %>
+</div>

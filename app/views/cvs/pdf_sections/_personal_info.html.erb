@@ -1,0 +1,28 @@
+<%
+  item = items.first || {}
+  first_row = [
+    { value: item["email"], link: false },
+    { value: item["phone"], link: false },
+    { value: item["linkedin"], link: true }
+  ].select { |i| i[:value].present? }
+  second_row = [
+    { value: item["github"], link: true },
+    { value: item["otherLink"], link: true }
+  ].select { |i| i[:value].present? }
+%>
+<div class="personal-info">
+  <h1 class="name"><%= item["fullName"].to_s %></h1>
+  <% [ first_row, second_row ].each do |row| %>
+    <% next if row.empty? %>
+    <div class="info-row">
+      <% row.each_with_index do |info, index| %>
+        <% if index > 0 %><span class="dot">&bull;</span><% end %>
+        <% if info[:link] %>
+          <a href="https://<%= info[:value] %>"><%= info[:value] %></a>
+        <% else %>
+          <span><%= info[:value] %></span>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
