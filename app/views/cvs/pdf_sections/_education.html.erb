@@ -1,0 +1,23 @@
+<div class="section section-gap-2">
+  <h2 class="section-title"><%= title %></h2>
+  <% items.each do |item| %>
+    <% has_date = item["startDate"].present? || item["endDate"].present? %>
+    <div class="entry row-start">
+      <div>
+        <p class="bold"><%= item["degree"] %></p>
+        <p><%= item["school"] %></p>
+        <% if item["honors"].present? %>
+          <p class="muted"><%= item["honors"] %></p>
+        <% end %>
+      </div>
+      <div class="shrink-0 text-right">
+        <p>
+          <% if has_date %><%= item["startDate"] %> - <%= item["endDate"] %><% end %>
+        </p>
+        <% if item["gpa"].present? %>
+          <p><span class="semibold">GPA:</span> <%= item["gpa"] %></p>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

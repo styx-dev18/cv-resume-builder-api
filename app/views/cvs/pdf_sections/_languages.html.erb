@@ -1,0 +1,13 @@
+<% languages = items.select { |item| item["language"].present? } %>
+<div class="section section-gap-1">
+  <h2 class="section-title"><%= title %></h2>
+  <% if languages.any? %>
+    <p class="entry">
+      <% languages.each_with_index do |item, index| %>
+        <% if index > 0 %> &middot; <% end %>
+        <span class="semibold"><%= item["language"] %></span>
+        <% if item["proficiency"].present? %> (<%= item["proficiency"] %>)<% end %>
+      <% end %>
+    </p>
+  <% end %>
+</div>

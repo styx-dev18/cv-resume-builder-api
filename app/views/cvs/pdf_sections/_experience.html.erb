@@ -1,0 +1,23 @@
+<div class="section section-gap-2">
+  <h2 class="section-title"><%= title %></h2>
+  <% items.each do |item| %>
+    <% has_date = item["startDate"].present? || item["endDate"].present? || item["current"] %>
+    <div class="entry">
+      <div class="row bold">
+        <p><%= item["position"] %></p>
+        <p class="shrink-0">
+          <% if has_date %><%= item["startDate"] %> &ndash; <%= item["current"] ? "Present" : item["endDate"] %><% end %>
+        </p>
+      </div>
+      <div class="row bold">
+        <p><%= item["company"] %></p>
+        <p><%= item["location"] %></p>
+      </div>
+      <% if item["description"].present? %>
+        <div class="rich-text">
+          <%= sanitize(item["description"], tags: %w[p strong em u s ol ul li a br], attributes: %w[href target rel]) %>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>

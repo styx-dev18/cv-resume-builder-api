@@ -1,0 +1,19 @@
+<div class="section section-gap-3">
+  <h2 class="section-title"><%= title %></h2>
+  <% items.each do |item| %>
+    <div class="entry">
+      <div class="row">
+        <p class="semibold">
+          <%= item["role"] %>
+          <% if item["organization"].present? %> &middot; <%= item["organization"] %><% end %>
+        </p>
+        <% if item["startDate"].present? || item["endDate"].present? %>
+          <p class="shrink-0 text-xs muted"><%= item["startDate"] %> &ndash; <%= item["endDate"] %></p>
+        <% end %>
+      </div>
+      <% if item["description"].present? %>
+        <p class="pre-wrap mt-1"><%= item["description"] %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
